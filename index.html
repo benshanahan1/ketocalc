@@ -11,7 +11,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&family=Open+Sans:wght@300;700&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
 </head>
 <body>
 
@@ -21,30 +22,45 @@
     </div>
 
     <div class="section">
-        <div class="section-header">Beef</div>
-        <div class="section-input">
-            <input type="number" id="beefPounds" />
-            <div class="unit">pounds</div>
-            <button onclick="javascript:calculate('beefPounds')">&raquo;</button>
+        <div class="section-header">
+            <select class="protein-select" id="proteinSelect" onchange="javascript:updateInterface()">
+                <option value="beef">Beef</option>
+                <option value="chicken">Chicken</option>
+                <option value="turkey">Turkey</option>
+            </select>
         </div>
         <div class="section-input">
-            <input type="number" id="beefGrams" />
+            <input type="number" id="proteinPounds" />
+            <div class="unit">pounds</div>
+            <button onclick="javascript:calculate('proteinPounds')">&raquo;</button>
+        </div>
+        <div class="section-input">
+            <input type="number" id="proteinGrams" />
             <div class="unit">grams</div>
-            <button onclick="javascript:calculate('beefGrams')">&raquo;</button>
+            <button onclick="javascript:calculate('proteinGrams')">&raquo;</button>
         </div>
     </div>
 
     <div class="section">
         <div class="section-header">Broccoli</div>
         <div class="section-input">
-            <input type="number" id="broccoliPounds" />
+            <input type="number" id="vegetablePounds" />
             <div class="unit">pounds</div>
-            <button onclick="javascript:calculate('broccoliPounds')">&raquo;</button>
+            <button onclick="javascript:calculate('vegetablePounds')">&raquo;</button>
         </div>
         <div class="section-input">
-            <input type="number" id="broccoliGrams" />
+            <input type="number" id="vegetableGrams" />
             <div class="unit">grams</div>
-            <button onclick="javascript:calculate('broccoliGrams')">&raquo;</button>
+            <button onclick="javascript:calculate('vegetableGrams')">&raquo;</button>
+        </div>
+    </div>
+
+    <div class="section hide" id="oilSection">
+        <div class="section-header">Coconut Oil</div>
+        <div class="section-input">
+            <input type="number" id="oilGrams" />
+            <div class="unit">grams</div>
+            <button onclick="javascript:calculate('oilGrams')">&raquo;</button>
         </div>
     </div>
 
@@ -58,7 +74,9 @@
     </div>
 
     <div class="footer">
-        Made with &#9829; 2022
+        <a class="github-link" href="https://github.com/benshanahan1/ketocalc" target="_blank">
+            Made with &#9829; 2022
+        </a>
     </div>
 
 </body>
