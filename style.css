@@ -1,0 +1,88 @@
+/* HEADER & FOOTER */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    font-size: 16pt;
+    background-color: rgb(210, 179, 234);
+}
+
+.header {
+    padding-top: 15px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header .header-title {
+    font-size: 30pt;
+    font-weight: 700;
+}
+
+.header .header-description {
+    font-size: 14pt;
+}
+
+.section {
+    margin: 10px;
+    margin-bottom: 15px;
+    padding: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    border: solid 1px rgb(194, 149, 91);
+    background-color: rgb(253, 178, 117);
+}
+
+.section .section-header {
+    font-size: 20pt;
+    font-weight: 700;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+.section .section-input .unit {
+    display: inline-block;
+    line-height: 45px;
+}
+
+.footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 10pt;
+    color: rgb(68, 68, 68);
+}
+
+/* INPUTS */
+
+input {
+    font-family: 'Fira Code', monospace;
+    font-size: 18pt;
+    font-weight: bold;
+    color: purple;
+    border: solid 1px rgb(194, 149, 91);
+    background-color: white;
+    height: 45px;
+    width: 45vw;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+}
+
+/* BUTTONS */
+
+.section .section-input button {
+    width: 15vw;
+    height: 45px;
+    font-family: 'Fira Code', monospace;
+    font-weight: bold;
+    font-size: 18pt;
+    background-color: white;
+    border-radius: 5px;
+    border: solid 1px rgb(194, 149, 91);
+    padding: 0;
+    margin: 0;
+    float: right;
+    color: black;
+}

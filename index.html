@@ -1,0 +1,65 @@
+<html>
+<head>
+
+    <title>Food Calculator</title>
+
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&family=Open+Sans:wght@300;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+    <div class="header">
+        <div class="header-title">Keto Calculator</div>
+        <div class="header-description">Set any value and click to compute</div>
+    </div>
+
+    <div class="section">
+        <div class="section-header">Beef</div>
+        <div class="section-input">
+            <input type="number" id="beefPounds" />
+            <div class="unit">pounds</div>
+            <button onclick="javascript:calculate('beefPounds')">&raquo;</button>
+        </div>
+        <div class="section-input">
+            <input type="number" id="beefGrams" />
+            <div class="unit">grams</div>
+            <button onclick="javascript:calculate('beefGrams')">&raquo;</button>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header">Broccoli</div>
+        <div class="section-input">
+            <input type="number" id="broccoliPounds" />
+            <div class="unit">pounds</div>
+            <button onclick="javascript:calculate('broccoliPounds')">&raquo;</button>
+        </div>
+        <div class="section-input">
+            <input type="number" id="broccoliGrams" />
+            <div class="unit">grams</div>
+            <button onclick="javascript:calculate('broccoliGrams')">&raquo;</button>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header">Days of Food</div>
+        <div class="section-input">
+            <input type="number" id="days" />
+            <div class="unit">days</div>
+            <button onclick="javascript:calculate('days')">&raquo;</button>
+        </div>
+    </div>
+
+    <div class="footer">
+        Made with &#9829; 2022
+    </div>
+
+</body>
+</html>
