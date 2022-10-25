@@ -1,83 +1,132 @@
 <html>
-<head>
-
+  <head>
     <title>Keto Calculator</title>
 
-    <script src="script.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&family=Open+Sans:wght@300;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-</head>
-<body>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&family=Open+Sans:wght@300;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
     <div class="header">
-        <div class="header-title">Keto Calculator</div>
-        <div class="header-description">Set any value and click to compute</div>
+      <div class="header-title">Keto Calculator</div>
+      <div class="header-description">Set any value and click to compute</div>
+      <div class="header-description">Inline math expressions are valid</div>
     </div>
 
     <div class="section">
-        <div class="section-header">
-            <select class="protein-select" id="proteinSelect" onchange="javascript:updateInterface()">
-                <option value="beef">Beef</option>
-                <option value="chicken">Chicken</option>
-                <option value="turkey">Turkey</option>
-            </select>
-        </div>
-        <div class="section-input">
-            <input type="number" id="proteinPounds" />
-            <div class="unit">pounds</div>
-            <button onclick="javascript:calculate('proteinPounds')">&raquo;</button>
-        </div>
-        <div class="section-input">
-            <input type="number" id="proteinGrams" />
-            <div class="unit">grams</div>
-            <button onclick="javascript:calculate('proteinGrams')">&raquo;</button>
-        </div>
+      <div class="section-header">
+        <select
+          class="protein-select"
+          id="proteinSelect"
+          onchange="updateInterface()"
+        >
+          <option value="beef">Beef</option>
+          <option value="chicken">Chicken</option>
+          <option value="turkey">Turkey</option>
+        </select>
+      </div>
+      <div class="section-input">
+        <input
+          type="text"
+          id="proteinPounds"
+          onfocus="selectInputText('proteinPounds')"
+          onblur="evaluateExpression('proteinPounds')"
+        />
+        <div class="unit">pounds</div>
+        <button onclick="calculate('proteinPounds')">&raquo;</button>
+      </div>
+      <div class="section-input">
+        <input
+          type="text"
+          id="proteinGrams"
+          onfocus="selectInputText('proteinGrams')"
+          onblur="evaluateExpression('proteinGrams')"
+        />
+        <div class="unit">grams</div>
+        <button onclick="calculate('proteinGrams')">&raquo;</button>
+      </div>
     </div>
 
     <div class="section">
-        <div class="section-header">Broccoli</div>
-        <div class="section-input">
-            <input type="number" id="vegetablePounds" />
-            <div class="unit">pounds</div>
-            <button onclick="javascript:calculate('vegetablePounds')">&raquo;</button>
-        </div>
-        <div class="section-input">
-            <input type="number" id="vegetableGrams" />
-            <div class="unit">grams</div>
-            <button onclick="javascript:calculate('vegetableGrams')">&raquo;</button>
-        </div>
+      <div class="section-header">Broccoli</div>
+      <div class="section-input">
+        <input
+          type="text"
+          id="vegetablePounds"
+          onfocus="selectInputText('vegetablePounds')"
+          onblur="evaluateExpression('vegetablePounds')"
+        />
+        <div class="unit">pounds</div>
+        <button onclick="calculate('vegetablePounds')">&raquo;</button>
+      </div>
+      <div class="section-input">
+        <input
+          type="text"
+          id="vegetableGrams"
+          onfocus="selectInputText('vegetableGrams')"
+          onblur="evaluateExpression('vegetableGrams')"
+        />
+        <div class="unit">grams</div>
+        <button onclick="calculate('vegetableGrams')">&raquo;</button>
+      </div>
     </div>
 
     <div class="section hide" id="oilSection">
-        <div class="section-header">Coconut Oil</div>
-        <div class="section-input">
-            <input type="number" id="oilGrams" />
-            <div class="unit">grams</div>
-            <button onclick="javascript:calculate('oilGrams')">&raquo;</button>
-        </div>
+      <div class="section-header">Coconut Oil</div>
+      <div class="section-input">
+        <input
+          type="text"
+          id="oilGrams"
+          onfocus="selectInputText('oilGrams')"
+          onblur="evaluateExpression('oilGrams')"
+        />
+        <div class="unit">grams</div>
+        <button onclick="calculate('oilGrams')">&raquo;</button>
+      </div>
     </div>
 
     <div class="section">
-        <div class="section-header">Days of Food</div>
-        <div class="section-input">
-            <input type="number" id="days" />
-            <div class="unit">days</div>
-            <button onclick="javascript:calculate('days')">&raquo;</button>
-        </div>
+      <div class="section-header">Days of Food</div>
+      <div class="section-input">
+        <input
+          type="text"
+          id="days"
+          onfocus="selectInputText('days')"
+          onblur="evaluateExpression('days')"
+        />
+        <div class="unit">days</div>
+        <button onclick="calculate('days')">&raquo;</button>
+      </div>
     </div>
 
     <div class="footer">
-        <a class="github-link" href="https://github.com/benshanahan1/ketocalc" target="_blank">
-            Made with &#9829; 2022
-        </a>
+      <a
+        class="github-link"
+        href="https://github.com/benshanahan1/ketocalc"
+        target="_blank"
+      >
+        Made with &#9829; 2022
+      </a>
     </div>
+  </body>
 
-</body>
+  <script
+    src="https://unpkg.com/mathjs@11.3.1/lib/browser/math.js"
+    type="text/javascript"
+  ></script>
+  <script src="script.js"></script>
 </html>

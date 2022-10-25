@@ -60,6 +60,21 @@ function getTargetsBySelectedProtein() {
   return targets[getElements().proteinSelect.value];
 }
 
+function selectInputText(inputElementId) {
+  document.getElementById(inputElementId).select();
+}
+
+// Parse text input value or evaluate mathematical expression.
+function parseValue(value) {
+  let result;
+  try {
+    result = math.evaluate(value);
+  } catch {
+    result = "NaN";
+  }
+  return parseFloat(result);
+}
+
 function updateInterface() {
   var targets = getTargetsBySelectedProtein();
   var elements = getElements();
@@ -72,7 +87,7 @@ function updateInterface() {
   }
 
   // If protein input has a value, recompute all fields from it.
-  if (!isNaN(parseFloat(elements.proteinPoundsInput.value))) {
+  if (!isNaN(parseValue(elements.proteinPoundsInput.value))) {
     calculate(elements.proteinPoundsInput.id);
   }
 }
@@ -93,12 +108,12 @@ function calculate(inputElementId) {
     daysInput,
   } = getElements();
 
-  var proteinPounds = parseFloat(proteinPoundsInput.value);
-  var proteinGrams = parseFloat(proteinGramsInput.value);
-  var vegetablePounds = parseFloat(vegetablePoundsInput.value);
-  var vegetableGrams = parseFloat(vegetableGramsInput.value);
-  var oilGrams = parseFloat(oilGramsInput.value);
-  var days = parseFloat(daysInput.value);
+  var proteinPounds = parseValue(proteinPoundsInput.value);
+  var proteinGrams = parseValue(proteinGramsInput.value);
+  var vegetablePounds = parseValue(vegetablePoundsInput.value);
+  var vegetableGrams = parseValue(vegetableGramsInput.value);
+  var oilGrams = parseValue(oilGramsInput.value);
+  var days = parseValue(daysInput.value);
 
   // Validate inputs.
   if (isNaN(proteinPounds)) proteinPoundsInput.value = null;
@@ -187,6 +202,50 @@ function calculate(inputElementId) {
       setText(vegetableGramsInput, vegetableGrams);
       setText(vegetablePoundsInput, vegetablePounds);
       setText(oilGramsInput, oilGrams);
+      break;
+    default:
+      console.log("Unrecognized input element id.");
+      break;
+  }
+}
+
+function evaluateExpression(inputElementId) {
+  // Get all input elements.
+  var {
+    proteinPoundsInput,
+    proteinGramsInput,
+    proteinGramsInput,
+    vegetablePoundsInput,
+    vegetableGramsInput,
+    oilGramsInput,
+    daysInput,
+  } = getElements();
+
+  // Update values based on input element id
+  switch (inputElementId) {
+    case "proteinPounds":
+      var proteinPounds = parseValue(proteinPoundsInput.value);
+      setText(proteinPoundsInput, proteinPounds);
+      break;
+    case "proteinGrams":
+      var proteinGrams = parseValue(proteinGramsInput.value);
+      setText(proteinGramsInput, proteinGrams);
+      break;
+    case "vegetablePounds":
+      var vegetablePounds = parseValue(vegetablePoundsInput.value);
+      setText(vegetablePoundsInput, vegetablePounds);
+      break;
+    case "vegetableGrams":
+      var vegetableGrams = parseValue(vegetableGramsInput.value);
+      setText(vegetableGramsInput, vegetableGrams);
+      break;
+    case "oilGrams":
+      var oilGrams = parseValue(oilGramsInput.value);
+      setText(oilGramsInput, oilGrams);
+      break;
+    case "days":
+      var days = parseValue(daysInput.value);
+      setText(daysInput, days);
       break;
     default:
       console.log("Unrecognized input element id.");
